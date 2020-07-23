@@ -75,7 +75,8 @@ async function fetchAndApply(request) {
 
         let original_response = await fetch(url.href, {
             method: method,
-            headers: new_request_headers
+            headers: new_request_headers,
+            body: request.body
         })
 
         connection_upgrade = new_request_headers.get("Upgrade");
