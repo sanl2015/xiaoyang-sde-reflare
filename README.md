@@ -4,9 +4,10 @@
 
 # Workers-Proxy
 
-[![LICENSE](https://img.shields.io/github/license/Berkeley-Reject/Workers-Proxy.svg?style=for-the-badge)](https://github.com/Berkeley-Reject/Workers-Proxy/blob/master/LICENSE)
-[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Berkeley-Reject/Workers-Proxy?style=for-the-badge)](https://github.com/Berkeley-Reject/Workers-Proxy/issues)
-[![GitHub stars](https://img.shields.io/github/stars/Berkeley-Reject/Workers-Proxy?style=for-the-badge)](https://github.com/Berkeley-Reject/Workers-Proxy/stargazers)
+[![LICENSE](https://img.shields.io/github/license/Berkeley-Reject/Workers-Proxy.svg?style=flat-square)](https://github.com/Berkeley-Reject/Workers-Proxy/blob/master/LICENSE)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Berkeley-Reject/Workers-Proxy?style=flat-square)](https://github.com/Berkeley-Reject/Workers-Proxy/issues)
+[![GitHub stars](https://img.shields.io/github/stars/Berkeley-Reject/Workers-Proxy?style=flat-square)](https://github.com/Berkeley-Reject/Workers-Proxy/stargazers)
+[![HitCount](http://hits.dwyl.com/xiaoyang-liu-cs/workers-proxy.svg)](http://hits.dwyl.com/xiaoyang-liu-cs/workers-proxy)
 
 [Issues](https://github.com/Berkeley-Reject/Workers-Proxy/issues) |
 [Pull requests](https://github.com/Berkeley-Reject/Workers-Proxy/pulls) | 
