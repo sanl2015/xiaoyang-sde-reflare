@@ -1,4 +1,4 @@
-# booster.js
+![Header](./.github/img/header.png)
 
 <div align="center">
 
@@ -10,13 +10,12 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/winter-is-coming.svg)](https://forthebadge.com)
 
-[Examples](#examples)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-[Releases](https://github.com/xiaoyang-liu-cs/booster.js/releases)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-[Font Patcher](#font-patcher)&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+[Releases](https://github.com/xiaoyang-liu-cs/booster.js/releases) | 
+[Examples](#examples) | 
+[Contribute](#contribute) | 
+[Buy Me a Coffee](https://www.buymeacoffee.com/xiaoyangliu)
 
 </div>
-
-## Introduction
 
 **booster.js** is a speed and performance optimizier for your website, delivering fast web experiences to users. Built with Cloudflare Workers, it caches static assets on the high performance global network, applies optimizations to web pages, and guards your website from scrapers or malicious attacks.
 
@@ -28,9 +27,7 @@
 - Serverless: No virtual machines, no servers, and no containers to maintain.
 - Todo: Load balancer, HTMLRewriter, and advanced routing rules.
 
-<p align="center">
-  <img src="./.github/img/demo.png" alt="Size Limit CLI" width="738">
-</p>
+![Demo](./.github/img/demo.png)
 
 ## Build and Deploy
 
@@ -77,10 +74,7 @@ wrangler publish
 
 ## Config
 
-<p align="center">
-  <img src="./.github/img/config.png" alt="Size Limit CLI" width="738">
-</p>
-
+![Config](./.github/img/config.png)
 
 `basic`
 - `upstream`: Protocol, Domain, Port (Optional), Path (Optional). Example: `https://www.math.ucla.edu/~tao/`
@@ -113,3 +107,22 @@ routes: {
 |-|-|-|
 | [Google](https://www.google.com) | [examples/google.js](examples/google.js) | N/A |
 | [Wikipedia](https://en.wikipedia.org) | [examples/wikipedia.js](examples/wikipedia.js) | [https://booster.readme.workers.dev](https://booster.readme.workers.dev) |
+
+## Contribute
+
+- `Feature Request`: Create an issue with the **Feature request** template.
+- `Bug Reports`: Create an issue with the **Bug report** template.
+- `Improvements to the booster.js`: Fork the repository, edit code, deploy it to Cloudflare Workers, and then create a pull request.
+- `Add Config Examples`: Fork the repository, write an example config for any website, save it to the `examples` directory, and then create a pull request.
+
+### Current contributors
+
+[![](https://contributors-img.web.app/image?repo=xiaoyang-liu-cs/booster.js)](https://github.com/xiaoyang-liu-cs/booster.js/graphs/contributors)
+
+## Support booster.js
+
+We accept donations through these channels:
+
+- [Buy Me a Coffee](https://www.buymeacoffee.com/xiaoyangliu)
+- Bitcoin: 1Eb4n6eEyyKjbu3feA9oAQAnZo1K46UvXN
+- Ethereum: 0x16145d98625c0b2aa265773970ca090bf783d5ae
