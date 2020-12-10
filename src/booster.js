@@ -34,7 +34,7 @@ addEventListener('fetch', event => {
 })
 
 async function fetchAndApply(request) {
-    const region = request.headers.get('cf-ipcountry');
+    const region = request.headers.get('cf-ipcountry') || '';
     const ipAddress = request.headers.get('cf-connecting-ip') || '';
     const userAgent = request.headers.get('user-agent') || '';
 
@@ -69,8 +69,23 @@ async function fetchAndApply(request) {
     requestURL.host = upstreamURL.host;
     requestURL.pathname = upstreamURL.pathname + requestURL.pathname;
 
-    let fetchedResponse = await fetch(
-        new Request(requestURL, {
+    let newRequest;
+    if (request.method === "GET" || request.method === "HEAD") {
+        newRequest = new Request(requestURL, {
+            cf: {
+                cacheEverything: config.optimization.cacheEverything,
+                cacheTtl: config.optimization.cacheTtl,
+                mirage: config.optimization.mirage,
+                polish: config.optimization.polish,
+                minify: config.optimization.minify,
+                scrapeShield: config.firewall.scrapeShield
+            },
+            method: request.method,
+            headers: request.headers
+        })
+    } else {
+        const requestBody = await request.text();
+        newRequest = new Request(requestURL, {
             cf: {
                 cacheEverything: config.optimization.cacheEverything,
                 cacheTtl: config.optimization.cacheTtl,
@@ -81,9 +96,11 @@ async function fetchAndApply(request) {
             },
             method: request.method,
             headers: request.headers,
-            body: request.body
+            body: requestBody
         })
-    );
+    }
+
+    let fetchedResponse = await fetch(newRequest);
 
     let modifiedResponseHeaders = new Headers(fetchedResponse.headers);
     if (modifiedResponseHeaders.has("x-pjax-url")) {
