@@ -1,6 +1,6 @@
 {
   "name": "rocket-booster",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The edge-rendered speed booster for web applications, storage platforms, and RESTful APIs.",
   "main": "dist/index.js",
   "types": "dist/index.d.js",
@@ -17,7 +17,8 @@
     "serverless",
     "proxy",
     "workers",
-    "cloudflare"
+    "cloudflare",
+    "reverse-proxy"
   ],
   "author": "Xiaoyang Liu",
   "license": "MIT",
