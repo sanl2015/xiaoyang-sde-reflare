@@ -18,15 +18,14 @@
 
 </div>
 
-**Rocket Booster** is the edge-rendered speed booster for web applications, storage platforms, and RESTful APIs. It's a reverse proxy that sits in front of web servers, intercepting requests from clients, and transforming responses by adding several optimizations, such as HTTP/3 with QUIC, Brotli Compression, and 0-RTT Connection Resumption, to improve critical loading times.
+**Rocket Booster** is a serverless reverse proxy and load balancer library built for [Cloudflare Workers](https://workers.cloudflare.com). It sits in front of web servers (e.g. web application, storage platform, or RESTful API), forwards requests from clients to upstream servers, and transforms responses with several optimizations to improve critical loading times.
 
-- Performance: Deploy to a network of global data centers powered by Cloudflare.
-- Serverless: No virtual machines, servers, or containers to spin up or manage.
+- Serverless: Deploy instantly to the auto-scaling serverless platform built by Cloudflare. No virtual machines, servers, or containers to manage.
+- Security: Enable HTTPS, HTTP/3 (with QUIC), TLS 1.3, and IPv6 for web applications.
 - Optimization: Minify HTML/CSS/JS files, compress images, cache static assets.
 - Cross-Origin: Add necessary CORS headers to the proxied response.
-- Firewall: Block traffics from specific IP addresses, countries, or known bots.
-- Network: Enable HTTPS, HTTP/3 (with QUIC), TLS 1.3, and IPv6 for web applications.
-- Load Balance: Distribute incoming traffics evenly among different servers.
+- Firewall: Block traffics from specific IP addresses, countries, or scrapers.
+- Load Balancing: Distribute incoming traffics evenly among different servers.
 
 ## Build and Deploy
 
@@ -65,11 +64,17 @@ const config = {
     domain:  'example.com',
     protocol: 'https',
   },
-
   cors: {
     origin: '*',
   },
 };
+```
+
+- Build and publish to Cloudflare Workers
+
+```sh
+wrangler build
+wrangler publish
 ```
 
 ### Start from scratch
