@@ -1,5 +1,6 @@
-import { selectUpstream } from './load-balancer';
+import { selectUpstream } from './load-balancing';
 import { getFirewallResponse } from './firewall';
+import { setRequestHeaders, setResponseHeaders } from './headers';
 import { getUpstreamResponse } from './upstream';
 import { getCORSResponse } from './cors';
 import { getErrorResponse } from './error';
@@ -17,16 +18,22 @@ class RocketBooster {
       request,
       this.config.firewall,
     );
-    if (firewallResponse instanceof Response) {
+    if (firewallResponse !== null) {
       return firewallResponse;
     }
 
+    const headersRequest = setRequestHeaders(
+      request,
+      this.config.header,
+      this.config.security,
+    );
+
     const upstream = selectUpstream(
       this.config.upstream,
-      this.config.network,
+      this.config.loadBalancing,
     );
     const upstreamResponse = await getUpstreamResponse(
-      request,
+      headersRequest,
       upstream,
       this.config.optimization,
     );
@@ -43,7 +50,11 @@ class RocketBooster {
       this.config.cors,
     );
 
-    return corsResponse;
+    const headersResponse = setResponseHeaders(
+      corsResponse,
+      this.config.header,
+    );
+    return headersResponse;
   }
 }
 
