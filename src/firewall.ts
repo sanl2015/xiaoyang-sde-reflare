@@ -6,7 +6,7 @@ import {
 } from '../types/firewall';
 import { Middleware } from '../types/middleware';
 
-const getFieldParam = (
+export const getFieldParam = (
   request: Request,
   field: FirewallFields,
 ): string | number | null => {
@@ -39,13 +39,31 @@ const getFieldParam = (
   return null;
 };
 
-const parseFirewallRule = (
+export const parseFirewallRule = (
   fieldParam: string | number | null,
   operator: FirewallOperators,
-  value: string | string[] | number | number[],
+  value: string | string[] | number | number[] | RegExp,
 ): Response | null => {
   if (fieldParam === null) {
     return null;
+  }
+
+  if (
+    (value instanceof RegExp && operator !== 'match')
+    || (!(value instanceof RegExp) && operator === 'match')
+  ) {
+    throw new Error('You must use match operator for regular expression');
+  }
+
+  if (
+    value instanceof RegExp
+    && operator === 'match'
+    && value.test(fieldParam.toString())
+  ) {
+    return createResponse(
+      'You don\'t have permission to access this service.',
+      403,
+    );
   }
 
   if (
@@ -125,7 +143,7 @@ const parseFirewallRule = (
     operator === 'not contain'
   && typeof fieldParam === 'string'
   && typeof value === 'string'
-  && fieldParam.includes(value)
+  && !fieldParam.includes(value)
   ) {
     return createResponse(
       'You don\'t have permission to access this service.',
