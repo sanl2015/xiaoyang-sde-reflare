@@ -2,8 +2,48 @@ import { createResponse } from './utils';
 import {
   FirewallFields,
   FirewallOperators,
+  FirewallOptions,
 } from '../types/firewall';
 import { Middleware } from '../types/middleware';
+
+const validateFirewall = (
+  firewall: FirewallOptions,
+): void => {
+  if (
+    firewall.field === undefined
+    || firewall.operator === undefined
+    || firewall.value === undefined
+  ) {
+    throw new Error('Invalid \'firewall\' field in the option object');
+  }
+
+  const fields = new Set([
+    'country',
+    'continent',
+    'asn',
+    'ip',
+    'hostname',
+    'user-agent',
+  ]);
+  if (fields.has(firewall.field) === false) {
+    throw new Error('Invalid \'firewall\' field in the option object');
+  }
+
+  const operators = new Set([
+    'equal',
+    'not equal',
+    'greater',
+    'less',
+    'in',
+    'not in',
+    'contain',
+    'not contain',
+    'match',
+  ]);
+  if (operators.has(firewall.operator) === false) {
+    throw new Error('Invalid \'firewall\' field in the option object');
+  }
+};
 
 export const getFieldParam = (
   request: Request,
@@ -153,14 +193,16 @@ export const parseFirewallRule = (
   return null;
 };
 
-export const useFirewall: Middleware = (
+export const useFirewall: Middleware = async (
   context,
   next,
 ) => {
   const { request, options } = context;
   if (options.firewall === undefined) {
-    return next();
+    await next();
+    return;
   }
+  options.firewall.forEach(validateFirewall);
 
   for (const { field, operator, value } of options.firewall) {
     const fieldParam = getFieldParam(
@@ -176,9 +218,9 @@ export const useFirewall: Middleware = (
 
     if (response !== null) {
       context.response = response;
-      return null;
+      return;
     }
   }
 
-  return next();
+  await next();
 };
