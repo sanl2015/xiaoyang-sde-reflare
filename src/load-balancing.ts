@@ -25,7 +25,28 @@ export const ipHashHandler: LoadBalancingHandler = (
 
 export const randomHandler: LoadBalancingHandler = (
   upstream,
-) => upstream[Math.floor(Math.random() * upstream.length)];
+) => {
+  const weights = upstream.map(
+    (option) => (option.weight === undefined ? 1 : option.weight),
+  );
+  const totalWeight = weights.reduce(
+    (acc, num, index) => {
+      const sum = acc + num;
+      weights[index] = sum;
+      return sum;
+    },
+  );
+  if (totalWeight === 0) {
+    throw new Error('Total weights should be greater than 0.');
+  }
+  const random = Math.random() * totalWeight;
+  for (const index of weights.keys()) {
+    if (weights[index] >= random) {
+      return upstream[index];
+    }
+  }
+  return upstream[Math.floor(Math.random() * upstream.length)];
+};
 
 const handlersMap: Record<
   LoadBalancingPolicy,
