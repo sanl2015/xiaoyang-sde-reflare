@@ -12,6 +12,7 @@ import {
   matchOperator,
   notMatchOperator,
 } from '../src/firewall';
+import { WorkersKV } from '../src/storage';
 import { Context } from '../types/middleware';
 
 const request = new Request(
@@ -32,6 +33,7 @@ test('firewall.ts -> useFirewall()', async () => {
     response: new Response(),
     hostname: 'https://github.com',
     upstream: null,
+    storage: new WorkersKV(),
     options: {
       upstream: {
         domain: 'httpbin.org',
@@ -89,7 +91,7 @@ test('firewall.ts -> inOperator()', () => {
   expect(inOperator(0, [0, 1, 2])).toBeTruthy();
   expect(inOperator(0, [1, 2, 3])).toBeFalsy();
   try {
-    inOperator(0, "1, 2, 3");
+    inOperator(0, '1, 2, 3');
   } catch (error) {
     expect(error.message).toMatch('You must use an Array for \'value\' in firewall configuration to use \'in\' or \'not in\' operator');
   }
