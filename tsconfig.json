@@ -31,8 +31,8 @@
   },
   "include": [
     "src/*.ts",
-    "src/**/*.ts",
-    "test/*.ts",
+    "tests/*.ts",
+    "types/*.ts",
     "node_modules/@cloudflare/workers-types/index.d.ts"
   ],
   "exclude": [
