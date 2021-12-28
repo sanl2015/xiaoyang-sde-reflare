@@ -5,5 +5,5 @@ export interface ReplaceEntry {
 
 export interface ReplaceOptions {
   path?: RegExp;
-  replace: ReplaceEntry[];
+  entries: ReplaceEntry[];
 }
