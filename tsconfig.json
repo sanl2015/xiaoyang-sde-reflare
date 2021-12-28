@@ -5,7 +5,7 @@
     "target": "ES2020",
     "moduleResolution": "node",
     "lib": [
-      "ES2020",
+      "ES2021",
       "WebWorker"
     ],
     "types": [
