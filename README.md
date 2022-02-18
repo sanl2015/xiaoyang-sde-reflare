@@ -4,8 +4,8 @@
 
 [![GitHub Actions](https://img.shields.io/github/workflow/status/xiaoyang-sde/reflare/Node.js%20Test%20and%20Build?style=for-the-badge&logo=github)](https://github.com/xiaoyang-sde/reflare/actions)
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/xiaoyang-sde/reflare?style=for-the-badge&logo=codecov)](https://app.codecov.io/gh/xiaoyang-sde/reflare/)
-[![Package version](https://img.shields.io/npm/v/reflare?style=for-the-badge&logo=npm&color=red)](https://www.npmjs.com/package/reflare)
-[![Bundle size](https://img.shields.io/bundlephobia/min/reflare?style=for-the-badge&logo=webpack)](https://www.npmjs.com/package/reflare)
+[![Package Version](https://img.shields.io/npm/v/reflare?style=for-the-badge&logo=npm&color=red)](https://www.npmjs.com/package/reflare)
+[![Download Statistics](https://img.shields.io/npm/dt/reflare?style=for-the-badge&logo=npm&color=blue)](https://www.npmjs.com/package/reflare)
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/ctrl-c-ctrl-v.svg)](https://forthebadge.com)
@@ -292,22 +292,6 @@ reflare.push('/', {
 });
 ```
 
-### Rewrite
-
-- `location`: Rewrite the `location` header for responses with 3xx or 201 status if exists. (optional, defaults to `false`)
-
-```ts
-reflare.push({
-  path: '/*',
-  /* ... */
-  rewrite: {
-    path: {
-      '/api/user': '/user'
-    },
-  },
-});
-```
-
 ### Headers
 
 - `request`: Sets request header going upstream to the backend. Accepts an object. (optional, defaults to `{}`)
@@ -412,4 +396,4 @@ wrangler kv:key put --binding=[namespace] 'route-list' '[{"path":"/*","upstream"
 - **Report bugs**: Create an issue with the **Bug report** template.
 - **Add new feature or fix bugs**: Fork this repository, edit code, and send a pull request.
 
-[![Contributors](https://contributors-img.web.app/image?repo=reflare/reflare)](https://github.com/reflare/reflare/graphs/contributors)
+[![Contributors](https://contributors-img.web.app/image?repo=xiaoyang-sde/reflare)](https://github.com/xiaoyang-sde/reflare/graphs/contributors)
