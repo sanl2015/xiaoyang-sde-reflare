@@ -1,6 +1,6 @@
 {
   "name": "reflare",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight and scalable reverse proxy and load balancing library built for Cloudflare Workers",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/xiaoyang-sde/reflare/issues"
   },
-  "homepage": "https://booster.js.org",
+  "homepage": "https://reflare.js.org",
   "devDependencies": {
     "@cloudflare/workers-types": "^3.9.0",
     "@types/jest": "^27.5.0",
