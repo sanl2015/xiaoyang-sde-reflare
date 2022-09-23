@@ -31,7 +31,7 @@
   },
   "homepage": "https://reflare.js.org",
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.14.0",
+    "@cloudflare/workers-types": "^3.16.0",
     "@types/jest": "^27.5.0",
     "@typescript-eslint/eslint-plugin": "^5.30.4",
     "@typescript-eslint/parser": "^5.30.4",
